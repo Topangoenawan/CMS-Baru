@@ -75,7 +75,7 @@
                         if ($DataNamaDariDatabase == $DataNamaDariInputUser) {
                             $cek += 1;
                             if($DataPassDariDatabase == $DataPassDariInputUser) {
-                                header('location:menu.php');
+                                // header('location:index.php');
                             }
                             else{
                                 echo '<div class="alert alert-warning" role="alert">
