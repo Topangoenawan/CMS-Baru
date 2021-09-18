@@ -62,6 +62,7 @@
 
             <?php
                 include "../Library/config.php";
+                session_start();
                 if(isset($_GET['username']) AND isset($_GET['password'])){
                     $DataNamaDariInputUser = $_GET['username'];
                     $DataPassDariInputUser = md5($_GET['password']) ;
@@ -72,10 +73,19 @@
                         $DataPassDariDatabase = $data['password'];
                         $DataIdDariDatabase = $data['id'];
 
+                        var_dump($DataNamaDariDatabase);
+
                         if ($DataNamaDariDatabase == $DataNamaDariInputUser) {
-                            $cek += 1;
-                            if($DataPassDariDatabase == $DataPassDariInputUser) {
-                                // header('location:index.php');
+                            $cek = 1;
+                            var_dump("ada");
+                            if($DataPassDariInputUser == $DataPassDariDatabase) {
+                                $_SESSION['username'] = $DataNamaDariDatabase;
+                                $_SESSION['password'] = $DataPassDariDatabase;
+                                $_SESSION['id'] = $DataIdDariDatabase;
+                                $_SESSION['leveluser'] = 'admin';
+                                $_SESSION['timeout'] = time()+1000;
+                                $_SESSION['login'] = 1;
+                                header('location:index.php');
                             }
                             else{
                                 echo '<div class="alert alert-warning" role="alert">

@@ -14,8 +14,6 @@
 <div class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class = "navbar-nav mr-auto mt-2 mt-lg-0" >
         <?php
-            include "../Library/function_menu.php";
-            session_start();
             $_SESSION['leveluser'] = "admin";
             buat_menu("dashboard", "home", "Menu", array("admin","author"));
             buat_menu("dashboard", "home", "Data", array("admin","author"));

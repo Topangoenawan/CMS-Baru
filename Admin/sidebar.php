@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <nav class="navbar">
 <ul class="nav flex-column">
 <a class="navbar-brand" href="#">Administrator</a>
