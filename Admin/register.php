@@ -57,15 +57,15 @@
             //     $username = $_GET['username'];
             //     echo $username;
             // }
-            include "form.php";
+            include "../Library/function_form.php";
             buka_form("#",1,"edit");
             buat_textbox("Username", "username", "");
-            buat_password("Password", "password", "");
+                buat_password("Password", "password", "");
             buat_password("Repassword", "re_password", "");
             // buat_textbox("Email", "email", "");
             // buat_textarea("Alamat", "alamat", "");
             // $list = array();
-            // $list[] = array('val' => 'islam', 'cap' => 'ISLAM');
+                // $list[] = array('val' => 'islam', 'cap' => 'ISLAM');
             // $list[] = array('val' => 'kristen', 'cap' => 'KRISTEN');
             // $list[] = array('val' => 'katolik', 'cap' => 'KATOLIK');
             // $list[] = array('val' => 'hindu', 'cap' => 'HINDU');
@@ -73,6 +73,26 @@
             echo "<br>";
             tutup_form("#");
             ?>            
+
+            <?php
+                include '../Library/config.php';
+                if (isset($_GET['username']) and isset($_GET['password'])) {
+                    $pass1 = $_GET['password'];
+                    $pass2 = $_GET['re_password'];
+
+                    if ($pass1 == $pass2) {
+                        $passMD = md5($pass1);
+                        $username = $_GET['username'];
+                        $sql = "INSERT INTO `register` (`username`, `password`) VALUES ('$username', '$passMD')";
+                        $data = $mysqli->query($sql);
+                        header("location:login.php");
+                    } else {
+                        echo '<div class="alert alert-primary" role="alert">
+                            <strong>Warning!</strong> <a href="#" class="alert-link"></a>
+                        </div>';
+                    }
+                }  
+            ?>
         </div>
     </div>
 </div>
